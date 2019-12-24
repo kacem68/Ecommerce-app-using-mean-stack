@@ -1,0 +1,60 @@
+<button mat-mini-fab color="warn" (click)="onClosePoup()" class="float-right">
+  <mat-icon class="mat-18">close</mat-icon>
+</button>
+
+
+
+
+<form class="example-form" (ngSubmit)="onSave()" >
+
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Nom" (change)="onchange()" [(ngModel)]="client.nom" required name="nom" [formControl]="chaine">
+    <mat-icon class="mat-18" matSuffix>person</mat-icon>
+    <mat-error *ngIf="chaine.invalid">{{getErrorMessage1()}}</mat-error>
+
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+  <input type="text" matInput placeholder="Prénom" (change)="onchange()" [(ngModel)]="client.prenom" required name="prenom" [formControl]="chaine">
+    <mat-icon class="mat-18" matSuffix>person</mat-icon>
+    <mat-error *ngIf="chaine.invalid">{{getErrorMessage3()}}</mat-error>
+
+</mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Adress" (change)="onchange()" [(ngModel)]="client.adress" required name="adress">
+    <mat-icon class="mat-18" matSuffix>gps_fixed</mat-icon>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <span matPrefix>+212 &nbsp;</span>
+    <input type="tel" matInput placeholder="Télé" (change)="onchange()" required [(ngModel)]="client.tele" name="tele" [formControl]="number" required>
+    <mat-icon class="mat-18" matSuffix>phone</mat-icon>
+    <mat-error *ngIf="number.invalid">{{getErrorMessage2()}}</mat-error>
+    
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Gmail" (change)="onchange()" required [(ngModel)]="client.mail" name="mail" [formControl]="email" required>
+		<mat-icon class="mat-18" matSuffix>mail</mat-icon>
+
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Username" (change)="onchange()" required  [(ngModel)]="client.username" name="username">
+    <mat-icon class="mat-18" matSuffix>person</mat-icon>
+
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Password" (change)="onchange()" required [(ngModel)]="client.password" name="password">
+    <mat-icon class="mat-18" matSuffix>vpn_key</mat-icon>
+  </mat-form-field>
+   
+  <button mat-fab color="accent" type="submit"  [disabled]="disabled" class="float-right" >
+      <mat-icon class="mat-18">save</mat-icon>
+    </button>
+</form>
+

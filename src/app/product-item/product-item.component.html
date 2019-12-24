@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-end col-lg-12 ">
+  <mat-form-field appearance="outline" >
+    <mat-label>Chercher un produit</mat-label>
+    <input matInput placeholder="Taper une valeur"  [(ngModel)]="valeur">
+    <button mat-icon-button matSuffix >
+      <mat-icon class="mat-18">search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div *ngFor="let p of Products| filter:valeur" class="container col-lg-4 d-inline-block  ">
+  <mat-card class="">
+    <mat-card-header class="bg-primary">
+      <div mat-card-avatar   [ngStyle]="{'backgroundImage':'url(../../assets/image/'+p.image+')','backgroundSize':'cover'}">
+      </div>
+      <mat-card-title>
+        <a routerLink="Produit/{{p._id}}" class="text-white">        {{p.label}}
+        </a>
+      </mat-card-title>
+    </mat-card-header>
+
+    <button mat-button (click)="onAddProduct(p)" matBadge="{{tottalByProduct(p)}}" matBadgePosition="below before" color="accent" class="float-lg-right">
+      <mat-icon class="mat-18">add_shopping_cart</mat-icon>
+    </button>
+
+    <img matCardImage   (click)="afficher(p)"  [src]="'../../assets/image/'+p.image"  height="auto" width="auto" >
+    <mat-card-content>
+      <h4>
+        <mat-icon class="mat-18">attach_money</mat-icon>
+        {{p.prix}}
+      </h4>
+      <mat-expansion-panel #panel (mouseleave)="panel.close()" [hideToggle]="false">
+        <mat-expansion-panel-header>Détails</mat-expansion-panel-header>
+        {{p.details}}
+      </mat-expansion-panel>
+    </mat-card-content>
+    <mat-card-actions align="end" >
+      <button mat-button  matBadge="{{p.like}}"  [disabled]="status" (click)="onlik(p)" matBadgePosition=" before" class="bg-success">
+        <mat-icon class="mat-18">thumb_up</mat-icon>
+      </button>
+      <button mat-button matBadge="{{p.dislike}}" [disabled]="status" (click)="onDislik(p)" matBadgePosition="after" class="bg-danger">
+        <mat-icon class="mat-18">thumb_down</mat-icon>
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+
+    </mat-card-footer>
+  </mat-card>
+</div>

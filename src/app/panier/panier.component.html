@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div class="mat-dialog-container">
+    <table class="table table-info " >
+
+      <thead>
+      <tr>
+        <th> Num Ligne</th>
+        <th>Label Produits</th>
+        <th>Prix</th>
+        <th>Détails</th>
+        <th class="align-content-center">Quantité </th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <ng-container *ngIf="panier.length!=0">
+        <tbody  *ngFor="let p of panier;let i=index" >
+        <tr>
+          <th>{{i+1}}</th>
+          <th>{{p.produit.label}}</th>
+          <th>{{p.produit.prix}}</th>
+          <th>{{p.produit.details}}</th>
+          <th>
+
+            <button mat-icon-button  (click)="onAddQuantity(p)">
+              <mat-icon class="mat-8  text-success">keyboard_arrow_up</mat-icon>
+            </button>
+            {{p.total}}
+            <button mat-icon-button (click)="onsubstractQuantity(p,i)">
+              <mat-icon class="mat-8 text-danger">keyboard_arrow_down</mat-icon>
+            </button>
+          </th>
+          <th>
+
+            <button mat-icon-button >
+              <mat-icon class="mat-18" (click)="delete(i,p.produit)" color="warn">remove_shopping_cart</mat-icon>
+            </button>
+          </th>
+        </tr>
+        </tbody>
+        <tfoot >
+        <tr >
+          <td></td>
+          <td></td>
+          <td >
+          </td>
+          <td></td>
+          <td></td>
+          <td>   <button  (click)="onOpenInscription()" class="btn btn-success float-right" >
+            Générer Facture</button></td>
+        </tr>
+        </tfoot>
+      </ng-container>
+      <ng-container *ngIf="panier.length===0">
+        <tbody>
+        <tr class="text-danger font-weight-bold">
+
+          <td></td>
+          <td></td>
+          <td>   Ton panier est vide
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+        <tfoot >
+        <tr >
+          <td></td>
+          <td></td>
+          <td class="text-center">      <button  routerLink="/" class="btn btn-success" >Remplir</button>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tfoot>
+      </ng-container>
+
+    </table>
+  </div>
+
+</div>
+
+

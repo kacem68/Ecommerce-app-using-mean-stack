@@ -1,0 +1,73 @@
+<div class="container">
+<div class=" d-flex justify-content-between">
+
+  <div class="d-inline-block col-lg-3 bg-white mat-elevation-z2 rounded">
+    <div>    <h2>Facturé à</h2> </div>
+    <div>{{ client!=null?client.nom+' '+client.prenom:""}} </div>
+  </div>
+  <div class="d-inline-block col-lg-5 bg-white mat-elevation-z2 rounded">
+    <div class="d-flex justify-content-between" >
+      <div><h2 class="d-inline">Facture n°</h2></div>
+      <div class="d-flex align-items-center">
+        <div>
+          <h3 class="d-inline text-black-50">{{numFacture}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between" >
+      <div><h2 class="d-inline">Date</h2></div>
+      <div class="d-flex align-items-center">
+        <div>
+          <h3 class="d-inline text-black-50">{{date}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between" >
+      <div><h2 class="d-inline">Commande n°</h2></div>
+      <div class="d-flex align-items-center">
+        <div>
+          <h3 class="d-inline text-black-50">{{num}}</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <br>
+  <div>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th>Qté</th>
+        <th>Désignaion</th>
+        <th>Prix unit (DH)</th>
+        <th>Montant</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let p of monPanier">
+      <tr>
+        <td>{{p.total}}</td>
+        <td>{{p.produit.label+','+p.produit.details}} </td>
+        <td>{{p.produit.prix}}</td>
+        <td>{{p.produit.prix*p.total}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+
+      <tr>
+        <td colspan="3" class="text-lg-right font-weight-bold">Total</td>
+        <td class="bg-dark text-white">{{getTotal()!=0?getTotal():''}}</td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <br>
+  <div class="d-flex justify-content-end">
+    <button mat-button (click)="SaveFacture()" class="btn btn-success">Valider</button>
+  </div>
+  </div>
+
+
+
+
+

@@ -1,0 +1,20 @@
+#drawer{
+  width: 5cm;
+}
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+mat-drawer-content
+{
+  min-height:15.5cm;
+}
+#toolbar
+{
+  height: 2cm;
+}
+
+.search{
+  margin-right: 0.7cm;
+}
+
+

@@ -1,0 +1,21 @@
+
+<button mat-mini-fab (click)="onClosePoup()" color="warn" class="float-right">
+  <mat-icon class="mat-18">close</mat-icon>
+</button>
+<br>
+
+<h2>Vous êtes isncrit ?</h2>
+<mat-divider></mat-divider>
+<div>
+  <div>
+    <mat-radio-group [(ngModel)]="data.inscrit" class="d-flex justify-content-between" >
+      <mat-radio-button value="true">Oui</mat-radio-button>
+      <mat-radio-button value="false">Non</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div >
+  <button mat-button [mat-dialog-close]="data.inscrit" class="float-right" color="accent" cdkFocusInitial>
+    Confirmer
+  </button>
+</div>

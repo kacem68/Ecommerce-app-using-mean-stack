@@ -1,0 +1,71 @@
+
+<mat-drawer-container >
+  <mat-drawer class="position-fixed"  (mousewheel)="drawer.open()" mode="side" id="drawer" #drawer closed>
+    <mat-toolbar>
+      <mat-toolbar-row class="bg-primary justify-content-center ">
+        Store Product
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-accordion>
+    <mat-expansion-panel [hideToggle]="true" (mouseenter)="produit.open()" (mouseleave)="produit.close()"   #produit class="mat-elevation-z1">
+      <mat-expansion-panel-header class="bg-light">
+        <mat-panel-title>
+          Poduit</mat-panel-title>
+        <mat-icon class="mat-18" align="end">shop</mat-icon>
+      </mat-expansion-panel-header>
+      <ul class="nav flex-column">
+        <li class="nav-item d-inline-block d-inline-flex ">
+          <a class="nav-link active" routerLink="/Nouveau/Produit" routerLinkActive="active">          <mat-icon class="mat-18">add</mat-icon>
+            ajouter</a>
+        </li>
+        <li class="nav-item d-inline-block d-inline-flex ">
+        <a class="nav-link active" routerLink="/" routerLinkActive="active">          <mat-icon class="mat-18">list</mat-icon>
+          Liste</a>
+      </li>
+
+
+
+      </ul>
+    </mat-expansion-panel>
+    <mat-expansion-panel [hideToggle]="true"  (mouseenter)="panier.open()" (mouseleave)="panier.close()"   #panier  class="mat-elevation-z1">
+      <mat-expansion-panel-header class="bg-light">
+        <mat-panel-title>
+          Panier</mat-panel-title>
+        <mat-icon class="mat-18" align="end">shopping_cart</mat-icon>
+      </mat-expansion-panel-header >
+      <ul class="nav flex-column">
+        <li class="nav-item d-inline-block d-inline-flex ">
+          <a class="nav-link active" routerLink="/Panier" routerLinkActive="active">
+            <mat-icon class="mat-18" matBadgePosition="above before" matBadge="{{getTotal()}}">shopping_cart</mat-icon>
+            Mon Panier</a>
+        </li>
+
+      </ul>
+    </mat-expansion-panel>
+
+    </mat-accordion>
+  </mat-drawer>
+  <mat-drawer-content >
+    <mat-toolbar   id="toolbar" class=" mat-elevation-z2 ">
+      <span class="example-fill-remaining-space">
+        <mat-icon class="mat-36" (click)="drawer.toggle()" >menu</mat-icon>
+    </span>
+
+      <span class="d-flex justify-content-end">
+                <mat-icon matBadge="{{getTotal()}}"  matBadgePosition="above before" matBadgeColor="accent"  class="mat-18" >shopping_cart</mat-icon>
+</span>
+      <span></span>
+      <span class="d-flex justify-content-end">
+                <mat-icon matBadge="ZA" matBadgePosition="above after"  class="mat-18" >person</mat-icon>
+</span>
+
+
+    </mat-toolbar>
+    <router-outlet>
+      <br>
+    </router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+

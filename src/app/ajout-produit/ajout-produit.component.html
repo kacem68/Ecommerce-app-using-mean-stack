@@ -1,0 +1,35 @@
+
+<mat-accordion>
+  <div class="container">
+
+      <div class="row justify-content-lg-center">
+        <form [formGroup]="myform"  (ngSubmit)="onSave(myform)"  class="mat-elevation-z2 bg-white rounded-lg  "  >
+
+
+
+          <mat-form-field class="form-group col-lg-12 "  >
+            <input   placeholder="label"  matInput formControlName="label"    required="required"  #label>
+          </mat-form-field>
+          <mat-form-field class="form-group col-lg-12"  >
+            <input  placeholder="prix" matInput   formControlName="prix"  contrpo  required="required"  #prix>
+          </mat-form-field>
+          <mat-form-field class="form-group col-lg-12" >
+            <input  placeholder="details" matInput formControlName="details"  required="required"  #details>
+          </mat-form-field>
+          <div class="form-group col-lg-12">
+            <input  type="file" name="image" (change)="uplodfile($event,myform)" accept="image/png,image/gif,image/jpg,image/jpeg" />
+          </div>
+          <button  mat-button type="submit" id="btn_enregister"  class="btn btn-success float-right"  [disabled]="disabled"  >Enregistrer</button>
+
+
+        </form>
+      </div>
+    </div>
+
+  </mat-accordion>
+
+
+
+
+
+
